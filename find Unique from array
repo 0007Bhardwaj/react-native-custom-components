@@ -1,0 +1,86 @@
+// 1.GET UNIQUE ELEMENTS FROM OBJECT OF ARRAYS
+
+const newArray = [
+  { name: "bhardwaj", live: "delhi", age: 28 },
+  { name: "gaur", live: "gurgaon", age: 45 },
+  { name: "pooja", live: "england", age: 28 },
+  { name: "yadav", live: "canada", age: 21 },
+  { name: "ram", live: "england", age: 19 },
+  { name: "bhardwaj", live: "gurgaon", age: 16 },
+  { name: "ram", live: "canada", age: 19 },
+  { name: "gaur", live: "gurgaon", age: 28 },
+  { name: "tripathi", live: "delhi", age: 16 },
+];
+
+const unique = Array.from(new Set(newArray.map((val) => val.name)));
+// console.log(unique); //[ 'bhardwaj', 'gaur', 'pooja', 'yadav', 'ram', 'tripathi' ]
+
+const unique2 = newArray.filter(
+  (elem, index, array) =>
+    newArray.findIndex((obj) => obj.name == elem.name) === index
+);
+// console.log(unique2);
+// [
+//     { name: 'bhardwaj', live: 'delhi', age: 28 },
+//     { name: 'gaur', live: 'gurgaon', age: 45 },
+//     { name: 'pooja', live: 'england', age: 28 },
+//     { name: 'yadav', live: 'canada', age: 21 },
+//     { name: 'ram', live: 'england', age: 19 },
+//     { name: 'tripathi', live: 'delhi', age: 16 }
+//   ]
+
+
+const unique3 = [...new Set(newArray.map((item) => item.name))]; 
+// console.log(unique3)  //[ 'bhardwaj', 'gaur', 'pooja', 'yadav', 'ram', 'tripathi' ]
+
+
+const key = 'live';
+
+const unique4 = [...new Map(newArray.map(item =>
+  [item[key], item])).values()];
+
+// console.log(unique4);
+// [
+//     { name: 'tripathi', live: 'delhi', age: 16 },
+//     { name: 'gaur', live: 'gurgaon', age: 28 },
+//     { name: 'ram', live: 'england', age: 19 },
+//     { name: 'ram', live: 'canada', age: 19 }
+//   ]
+
+
+function uniq(array, field) {
+    return array.reduce((accumulator, current) => {
+        if(!accumulator.includes(current[field])) {
+          accumulator.push(current[field])
+        }
+        return accumulator;
+      }, []
+    )
+  }
+
+const unique5 = uniq(newArray, 'name');
+// console.log(unique5)  //[ 'bhardwaj', 'gaur', 'pooja', 'yadav', 'ram', 'tripathi' ]
+
+
+
+let data = new Map();
+
+for (let obj of newArray) {
+  data.set(obj.name, obj);
+}
+
+let unique6 = [...data.values()];
+
+// console.log(unique6);
+// [
+//     { name: 'bhardwaj', live: 'gurgaon', age: 16 },
+//     { name: 'gaur', live: 'gurgaon', age: 28 },
+//     { name: 'pooja', live: 'england', age: 28 },
+//     { name: 'yadav', live: 'canada', age: 21 },
+//     { name: 'ram', live: 'canada', age: 19 },
+//     { name: 'tripathi', live: 'delhi', age: 16 }
+//   ]
+
+
+console.log(Object.keys(newArray.reduce((r,{name}) => (r[name]='', r) , {}))) 
+//   [ 'bhardwaj', 'gaur', 'pooja', 'yadav', 'ram', 'tripathi' ]
