@@ -1,0 +1,251 @@
+import {StyleSheet, Text, View, Animated} from 'react-native';
+import React, {useEffect} from 'react';
+import {useRef} from 'react';
+
+const SkeletonView = ({width, height}) => {
+  const opacity = useRef(new Animated.Value(0.3));
+  useEffect(() => {
+    Animated.loop(
+      Animated.sequence([
+        Animated.timing(opacity.current, {
+          toValue: 0.7,
+          useNativeDriver: true,
+          duration: 500,
+        }),
+        Animated.timing(opacity.current, {
+          toValue: 0.3,
+          useNativeDriver: true,
+          duration: 800,
+        }),
+      ]),
+    ).start();
+  }, [opacity]);
+
+  return (
+    <View>
+      <View style={styles.container}>
+        <Animated.View
+          style={[{opacity: opacity.current, height, width}, styles.skeleton]}
+        />
+        <Animated.View
+          style={[
+            {
+              opacity: opacity.current,
+              height: 50,
+              width: 50,
+              borderRadius: 1000,
+            },
+            styles.skeleton,
+          ]}
+        />
+      </View>
+      <View style={styles.container}>
+        <Animated.View
+          style={[{opacity: opacity.current, height, width}, styles.skeleton]}
+        />
+        <Animated.View
+          style={[
+            {
+              opacity: opacity.current,
+              height: 50,
+              width: 50,
+              borderRadius: 1000,
+            },
+            styles.skeleton,
+          ]}
+        />
+      </View>
+      <View style={styles.container}>
+        <Animated.View
+          style={[{opacity: opacity.current, height, width}, styles.skeleton]}
+        />
+        <Animated.View
+          style={[
+            {
+              opacity: opacity.current,
+              height: 50,
+              width: 50,
+              borderRadius: 1000,
+            },
+            styles.skeleton,
+          ]}
+        />
+      </View>
+      <View style={styles.container}>
+        <Animated.View
+          style={[{opacity: opacity.current, height, width}, styles.skeleton]}
+        />
+        <Animated.View
+          style={[
+            {
+              opacity: opacity.current,
+              height: 50,
+              width: 50,
+              borderRadius: 1000,
+            },
+            styles.skeleton,
+          ]}
+        />
+      </View>
+      <View style={styles.container}>
+        <Animated.View
+          style={[{opacity: opacity.current, height, width}, styles.skeleton]}
+        />
+        <Animated.View
+          style={[
+            {
+              opacity: opacity.current,
+              height: 50,
+              width: 50,
+              borderRadius: 1000,
+            },
+            styles.skeleton,
+          ]}
+        />
+      </View>
+      <View style={styles.container}>
+        <Animated.View
+          style={[{opacity: opacity.current, height, width}, styles.skeleton]}
+        />
+        <Animated.View
+          style={[
+            {
+              opacity: opacity.current,
+              height: 50,
+              width: 50,
+              borderRadius: 1000,
+            },
+            styles.skeleton,
+          ]}
+        />
+      </View>
+      <View style={styles.container}>
+        <Animated.View
+          style={[{opacity: opacity.current, height, width}, styles.skeleton]}
+        />
+        <Animated.View
+          style={[
+            {
+              opacity: opacity.current,
+              height: 50,
+              width: 50,
+              borderRadius: 1000,
+            },
+            styles.skeleton,
+          ]}
+        />
+      </View>
+      <View style={styles.container}>
+        <Animated.View
+          style={[{opacity: opacity.current, height, width}, styles.skeleton]}
+        />
+        <Animated.View
+          style={[
+            {
+              opacity: opacity.current,
+              height: 50,
+              width: 50,
+              borderRadius: 1000,
+            },
+            styles.skeleton,
+          ]}
+        />
+      </View>
+      <View style={styles.container}>
+        <Animated.View
+          style={[{opacity: opacity.current, height, width}, styles.skeleton]}
+        />
+        <Animated.View
+          style={[
+            {
+              opacity: opacity.current,
+              height: 50,
+              width: 50,
+              borderRadius: 1000,
+            },
+            styles.skeleton,
+          ]}
+        />
+      </View>
+      <View style={styles.container}>
+        <Animated.View
+          style={[{opacity: opacity.current, height, width}, styles.skeleton]}
+        />
+        <Animated.View
+          style={[
+            {
+              opacity: opacity.current,
+              height: 50,
+              width: 50,
+              borderRadius: 1000,
+            },
+            styles.skeleton,
+          ]}
+        />
+      </View>
+      <View style={styles.container}>
+        <Animated.View
+          style={[{opacity: opacity.current, height, width}, styles.skeleton]}
+        />
+        <Animated.View
+          style={[
+            {
+              opacity: opacity.current,
+              height: 50,
+              width: 50,
+              borderRadius: 1000,
+            },
+            styles.skeleton,
+          ]}
+        />
+      </View>
+      <View style={styles.container}>
+        <Animated.View
+          style={[{opacity: opacity.current, height, width}, styles.skeleton]}
+        />
+        <Animated.View
+          style={[
+            {
+              opacity: opacity.current,
+              height: 50,
+              width: 50,
+              borderRadius: 1000,
+            },
+            styles.skeleton,
+          ]}
+        />
+      </View>
+      <View style={styles.container}>
+        <Animated.View
+          style={[{opacity: opacity.current, height, width}, styles.skeleton]}
+        />
+        <Animated.View
+          style={[
+            {
+              opacity: opacity.current,
+              height: 50,
+              width: 50,
+              borderRadius: 1000,
+            },
+            styles.skeleton,
+          ]}
+        />
+      </View>
+    </View>
+  );
+};
+
+export default SkeletonView;
+
+const styles = StyleSheet.create({
+  skeleton: {
+    backgroundColor: '#C0C0C0',
+    borderRadius: 20,
+    marginVertical: 20,
+  },
+  container: {
+    flexDirection: 'row',
+    justifyContent: 'space-between',
+    paddingHorizontal: 20,
+  },
+});
